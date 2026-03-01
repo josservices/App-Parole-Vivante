@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ -x /usr/bin/clang ]]; then
+  exec /usr/bin/clang "$@"
+fi
+
+if [[ -x /snap/flutter/current/usr/bin/clang ]]; then
+  exec /snap/flutter/current/usr/bin/clang "$@"
+fi
+
+echo "clang not found in /usr/bin or /snap/flutter/current/usr/bin" >&2
+exit 1

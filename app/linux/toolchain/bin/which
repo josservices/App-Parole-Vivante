@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ "${1:-}" == "clang++" ]]; then
+  printf '%s\n' "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/clang++"
+  exit 0
+fi
+
+if [[ -x /usr/bin/which ]]; then
+  exec /usr/bin/which "$@"
+fi
+
+if [[ -x /snap/flutter/current/usr/bin/which ]]; then
+  exec /snap/flutter/current/usr/bin/which "$@"
+fi
+
+echo "which command not found" >&2
+exit 1

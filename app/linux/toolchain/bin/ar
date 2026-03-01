@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ -x /usr/bin/ar ]]; then
+  exec /usr/bin/ar "$@"
+fi
+
+if [[ -x /snap/flutter/current/usr/bin/ar ]]; then
+  exec /snap/flutter/current/usr/bin/ar "$@"
+fi
+
+echo "ar not found in /usr/bin or /snap/flutter/current/usr/bin" >&2
+exit 1

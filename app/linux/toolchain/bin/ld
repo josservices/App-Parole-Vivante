@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ -x /usr/bin/ld ]]; then
+  exec /usr/bin/ld "$@"
+fi
+
+if [[ -x /snap/flutter/current/usr/bin/ld ]]; then
+  exec /snap/flutter/current/usr/bin/ld "$@"
+fi
+
+echo "ld not found in /usr/bin or /snap/flutter/current/usr/bin" >&2
+exit 1

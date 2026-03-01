@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  
+  <title>Parole Vivante (NT) - Bible Offline</title>
+  <meta name="description" content="Découvrez le Nouveau Testament Parole Vivante (Alfred Kuen) dans une application 100% offline, rapide et moderne.">
+  <meta name="keywords" content="Bible, Parole Vivante, Alfred Kuen, Nouveau Testament, Offline, PWA, Flutter">
+  <meta name="author" content="Parole Vivante">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Parole Vivante (NT) - Bible Offline">
+  <meta property="og:description" content="Lecture biblique fluide et sans connexion. Édition Alfred Kuen.">
+  <meta property="og:image" content="icons/Icon-512.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Parole Vivante (NT) - Bible Offline">
+  <meta property="twitter:description" content="Lecture biblique fluide et sans connexion. Édition Alfred Kuen.">
+
+  <!-- Theme & iOS -->
+  <meta name="theme-color" content="#1B8A5A">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Parole Vivante">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0B1220;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+      color: white;
+    }
+
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo-container {
+      position: relative;
+      width: 120px;
+      height: 120px;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 28px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    .loader-ring {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 3px solid transparent;
+      border-top-color: #1B8A5A;
+      border-radius: 50%;
+      animation: spin 1.5s linear infinite;
+    }
+
+    .app-title {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+      margin: 0;
+    }
+
+    .app-subtitle {
+      font-size: 14px;
+      font-weight: 400;
+      color: #1B8A5A;
+      margin-top: -15px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Transition pour quand Flutter prend le relais */
+    #flutter_loader {
+      transition: opacity 0.5s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <div id="flutter_loader" class="loading-container">
+    <div class="logo-container">
+      <div class="loader-ring"></div>
+      <img src="icons/Icon-192.png" alt="Parole Vivante Logo" class="logo">
+    </div>
+    <h1 class="app-title">Parole Vivante</h1>
+    <p class="app-subtitle">Nouveau Testament</p>
+  </div>
+
+  <script>
+    // Écouter quand Flutter est prêt pour cacher le loader
+    window.addEventListener('load', function(ev) {
+      // Le loader sera géré automatiquement par Flutter ou on peut le cacher après un délai court
+      // pour éviter un flash noir
+    });
+  </script>
+  
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
